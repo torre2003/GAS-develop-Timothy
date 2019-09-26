@@ -25,7 +25,13 @@ function showDataScraper() {
         filters.limit = limit
     }
     //TODO agregar filtos de comentarios
-    //with_comment = consult_manager.getValue(consult_manager.fields.search.limit)
+    with_comment = consult_manager.getValue(consult_manager.fields.search.with_comment)
+
+    if (with_comment != '') {
+
+        filters.with_comment = !with_comment ? 'true' : 'false'
+
+    }
 
     consult_manager.cleanSheet(
         row_from = 1,

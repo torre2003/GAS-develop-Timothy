@@ -5,7 +5,7 @@ function ScraperMerge() {
   this.urls = {
     entries: this.url_merge + '/dashboard/api/surroundings?',
     sector_of_point: this.url_merge + '/ahep/sector_of_point?',
-    summary_data_for_operation: this.url_merge + '/dashboard/api/summary_data_for_operation?',//limit=10&commune=325&web_site=1
+    summary_data_for_operation: this.url_merge + '/dashboard/api/summary_data_for_operation?',
     update_home_advisor_comment: this.url_merge + '/dashboard/api/update_home_advisor_comments',
   }
 }
