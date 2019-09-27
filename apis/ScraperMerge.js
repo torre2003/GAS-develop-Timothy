@@ -12,10 +12,11 @@ function ScraperMerge() {
 
 ScraperMerge.prototype.initialize = function () { }
 
+/**
+ * Retorna las propiedades de SII en el área determinada
+ */
 ScraperMerge.prototype.consultEntries = function (latitude, longitude, radius, limit) {
-  /*
-  Retorna las propiedades de SII en el área determinada
-  */
+
   var options = {
     'method': 'get',
     'headers': {}
@@ -30,10 +31,11 @@ ScraperMerge.prototype.consultEntries = function (latitude, longitude, radius, l
   return response
 }
 
+/**
+ * Retorn el sector correspondiente a una coordenada
+ */
 ScraperMerge.prototype.consultSectorOfPoint = function (latitude, longitude) {
-  /*
-  Retorna los sectores correspondientes a las coordenadas
-  */
+
   var options = {
     'method': 'get',
     'headers': {}
@@ -61,9 +63,7 @@ ScraperMerge.prototype.consultSectorOfPoint = function (latitude, longitude) {
  * }
  */
 ScraperMerge.prototype.consultSummaryDataForOperation = function (filters) {
-  /*
-  Retorna los sectores correspondientes a las coordenadas
-  */
+
   var options = {
     'method': 'get',
     'headers': {}
@@ -79,6 +79,26 @@ ScraperMerge.prototype.consultSummaryDataForOperation = function (filters) {
   var url = this.urls.summary_data_for_operation + params;
 
   response = UrlFetchApp.fetch(url, options).getContentText();
+
+  response = JSON.parse(response)
+
+  return response
+
+}
+
+
+/**
+ * Sube los comentarios del home advisor a scraper merge
+ */
+ScraperMerge.prototype.uploadCommentData = function (data) {
+
+  var options = {
+    'method': 'post',
+    'contentType': 'application/json',
+    'payload': JSON.stringify(data)
+  }
+
+  var response = UrlFetchApp.fetch(this.urls.update_home_advisor_comment, options).getContentText();
 
   response = JSON.parse(response)
 
