@@ -312,6 +312,57 @@ ConsultDataManager.prototype.proccesDataFromSM = function (data) {
 
         data[i].useful_mt2_price = ""
 
+        if (data[i]["entry_data_construction_year"] == 0) {
+
+            data[i]["entry_data_construction_year"] = ""
+
+        }
+
+        if (data[i]["entry_data_bedroom_quantity"] == 0) {
+
+            data[i]["entry_data_bedroom_quantity"] = ""
+
+        }
+
+        if (data[i]["entry_data_useful_area"] == 0) {
+
+            data[i]["entry_data_useful_area"] = ""
+
+        }
+
+        if (data[i]["property_price"] == 0) {
+
+            data[i]["property_price"] = ""
+
+        }
+
+
+
+        if (data[i]["reg_near_home_total_area_without_restriction"] == 0) {
+
+            data[i]["reg_near_home_total_area_without_restriction"] = ""
+
+        }
+
+        if (data[i]["reg_near_home_total_area_restriction_5_percentage_mt2"] == 0) {
+
+            data[i]["reg_near_home_total_area_restriction_5_percentage_mt2"] = ""
+
+        }
+
+        if (data[i]["reg_near_home_useful_area_without_restriction"] == 0) {
+
+            data[i]["reg_near_home_useful_area_without_restriction"] = ""
+
+        }
+
+        if (data[i]["reg_near_home_useful_area_restriction_5_percentage_mt2"] == 0) {
+
+            data[i]["reg_near_home_useful_area_restriction_5_percentage_mt2"] = ""
+
+        }
+
+
         if (data[i]["entry_data_useful_area"] != null &&
             data[i]["entry_data_useful_area"] != "" &&
             data[i]["entry_data_useful_area"] > 0 &&
@@ -524,60 +575,60 @@ ConsultDataManager.prototype.getFilters = function () {
 
 
 
-    filters.null_sector = null_sector == "" ? false : null_sector
+    filters.null_sector = null_sector === "" ? false : null_sector
 
-    filters.max_year = max_year == "" ? 999999999999999 : max_year
+    filters.max_year = max_year === "" ? 999999999999999 : max_year
 
-    filters.min_year = min_year == "" ? 0 : min_year
+    filters.min_year = min_year === "" ? 0 : min_year
 
-    filters.null_year = null_year == "" ? false : null_year
+    filters.null_year = null_year === "" ? false : null_year
 
-    filters.max_bedrooms = max_bedrooms == "" ? 999999999999999 : max_bedrooms
+    filters.max_bedrooms = max_bedrooms === "" ? 999999999999999 : max_bedrooms
 
-    filters.min_bedrooms = min_bedrooms == "" ? 0 : min_bedrooms
+    filters.min_bedrooms = min_bedrooms === "" ? 0 : min_bedrooms
 
-    filters.null_bedrooms = null_bedrooms == "" ? false : null_bedrooms
+    filters.null_bedrooms = null_bedrooms === "" ? false : null_bedrooms
 
-    filters.max_useful_area = max_useful_area == "" ? 999999999999999 : max_useful_area
+    filters.max_useful_area = max_useful_area === "" ? 999999999999999 : max_useful_area
 
-    filters.min_useful_area = min_useful_area == "" ? 0 : min_useful_area
+    filters.min_useful_area = min_useful_area === "" ? 0 : min_useful_area
 
-    filters.null_useful_area = null_useful_area == "" ? false : null_useful_area
+    filters.null_useful_area = null_useful_area === "" ? false : null_useful_area
 
-    filters.with_expired = with_expired == "" ? false : with_expired
+    filters.with_expired = with_expired === "" ? false : with_expired
 
-    filters.max_price = max_price == "" ? 999999999999999 : max_price
+    filters.max_price = max_price === "" ? 999999999999999 : max_price
 
-    filters.min_price = min_price == "" ? 0 : min_price
+    filters.min_price = min_price === "" ? 0 : min_price
 
-    filters.null_price = null_price == "" ? false : null_price
+    filters.null_price = null_price === "" ? false : null_price
 
-    filters.with_comment = with_comment == "" ? false : with_comment
+    filters.with_comment = with_comment === "" ? false : with_comment
 
-    filters.max_useful_mt2_price = max_useful_mt2_price == "" ? 999999999999999 : max_useful_mt2_price
+    filters.max_useful_mt2_price = max_useful_mt2_price === "" ? 999999999999999 : max_useful_mt2_price
 
-    filters.min_useful_mt2_price = min_useful_mt2_price == "" ? 0 : min_useful_mt2_price
+    filters.min_useful_mt2_price = min_useful_mt2_price === "" ? 0 : min_useful_mt2_price
 
-    filters.null_useful_mt2_price = null_useful_mt2_price == "" ? false : null_useful_mt2_price
+    filters.null_useful_mt2_price = null_useful_mt2_price === "" ? false : null_useful_mt2_price
 
-    filters.max_price_for_bedroom = max_price_for_bedroom == "" ? 999999999999999 : max_price_for_bedroom
+    filters.max_price_for_bedroom = max_price_for_bedroom === "" ? 999999999999999 : max_price_for_bedroom
 
-    filters.min_price_for_bedroom = min_price_for_bedroom == "" ? 0 : min_price_for_bedroom
+    filters.min_price_for_bedroom = min_price_for_bedroom === "" ? 0 : min_price_for_bedroom
 
-    filters.null_price_for_bedroom = null_price_for_bedroom == "" ? false : null_price_for_bedroom
+    filters.null_price_for_bedroom = null_price_for_bedroom === "" ? false : null_price_for_bedroom
 
 
-    filters.max_useful_mt2_avg_appraisal_price = max_useful_mt2_avg_appraisal_price == "" ? 999999999999999 : max_useful_mt2_avg_appraisal_price
+    filters.max_useful_mt2_avg_appraisal_price = max_useful_mt2_avg_appraisal_price === "" ? 999999999999999 : max_useful_mt2_avg_appraisal_price
 
-    filters.min_useful_mt2_avg_appraisal_price = min_useful_mt2_avg_appraisal_price == "" ? -99999999999999 : min_useful_mt2_avg_appraisal_price
+    filters.min_useful_mt2_avg_appraisal_price = min_useful_mt2_avg_appraisal_price === "" ? -99999999999999 : min_useful_mt2_avg_appraisal_price
 
-    filters.null_useful_mt2_avg_appraisal_price = null_useful_mt2_avg_appraisal_price == "" ? false : null_useful_mt2_avg_appraisal_price
+    filters.null_useful_mt2_avg_appraisal_price = null_useful_mt2_avg_appraisal_price === "" ? false : null_useful_mt2_avg_appraisal_price
 
-    filters.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price == "" ? 999999999999999 : max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? 999999999999999 : max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
 
-    filters.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price == "" ? -99999999999999 : min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? -99999999999999 : min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
 
-    filters.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price == "" ? false : null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? false : null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
 
     return filters
 }
@@ -598,7 +649,7 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // Sectors
     //-------
     if (!filters.null_sector &&
-        !(tuple['sector'] == null || tuple['sector'] == '')
+        !(tuple['sector'] == null || tuple['sector'] === '')
     ) {
         return false
     }
@@ -606,20 +657,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // year
     //-------
     if (//null
-        (tuple['entry_data_construction_year'] == '' || tuple['entry_data_construction_year'] == 0) && !filters.null_year
+        (tuple['entry_data_construction_year'] === '') && !filters.null_year
     ) {
         return false
     }
 
     if (//max
-        !(tuple['entry_data_construction_year'] == '' || tuple['entry_data_construction_year'] == 0) &&
+        !(tuple['entry_data_construction_year'] === '') &&
         filters.max_year < tuple['entry_data_construction_year']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['entry_data_construction_year'] == '' || tuple['entry_data_construction_year'] == 0) &&
+        !(tuple['entry_data_construction_year'] === '') &&
         filters.min_year > tuple['entry_data_construction_year']
     ) {
         return false
@@ -628,20 +679,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // bedromms
     //-------
     if (//null
-        (tuple['entry_data_bedroom_quantity'] == '' || tuple['entry_data_bedroom_quantity'] == 0) && !filters.null_bedrooms
+        (tuple['entry_data_bedroom_quantity'] === '') && !filters.null_bedrooms
     ) {
         return false
     }
 
     if (//max
-        !(tuple['entry_data_bedroom_quantity'] == '' || tuple['entry_data_bedroom_quantity'] == 0) &&
+        !(tuple['entry_data_bedroom_quantity'] === '') &&
         filters.max_bedrooms < tuple['entry_data_bedroom_quantity']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['entry_data_bedroom_quantity'] == '' || tuple['entry_data_bedroom_quantity'] == 0) &&
+        !(tuple['entry_data_bedroom_quantity'] === '') &&
         filters.min_bedrooms > tuple['entry_data_bedroom_quantity']
     ) {
         return false
@@ -650,20 +701,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // useful_area
     //-------
     if (//null
-        (tuple['entry_data_useful_area'] == '' || tuple['entry_data_useful_area'] == 0) && !filters.null_useful_area
+        (tuple['entry_data_useful_area'] === '') && !filters.null_useful_area
     ) {
         return false
     }
 
     if (//max
-        !(tuple['entry_data_useful_area'] == '' || tuple['entry_data_useful_area'] == 0) &&
+        !(tuple['entry_data_useful_area'] === '') &&
         filters.max_useful_area < tuple['entry_data_useful_area']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['entry_data_useful_area'] == '' || tuple['entry_data_useful_area'] == 0) &&
+        !(tuple['entry_data_useful_area'] === '') &&
         filters.min_useful_area > tuple['entry_data_useful_area']
     ) {
         return false
@@ -672,7 +723,7 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // with_expired
     //-------
     if (!filters.with_expired &&
-        !(tuple['entry_expiration_date'] == null || tuple['entry_expiration_date'] == '')
+        !(tuple['entry_expiration_date'] == null || tuple['entry_expiration_date'] === '')
     ) {
         return false
     }
@@ -681,20 +732,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // price
     //-------
     if (//null
-        (tuple['property_price'] == '' || tuple['property_price'] == 0) && !filters.null_price
+        (tuple['property_price'] === '') && !filters.null_price
     ) {
         return false
     }
 
     if (//max
-        !(tuple['property_price'] == '' || tuple['property_price'] == 0) &&
+        !(tuple['property_price'] === '') &&
         filters.max_price < tuple['property_price']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['property_price'] == '' || tuple['property_price'] == 0) &&
+        !(tuple['property_price'] === '') &&
         filters.min_price > tuple['property_price']
     ) {
         return false
@@ -704,7 +755,7 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // with_comment
     //-------
     if (!filters.with_comment &&
-        !(tuple['home_advisor_comment'] == null || tuple['home_advisor_comment'] == '')
+        !(tuple['home_advisor_comment'] == null || tuple['home_advisor_comment'] === '')
     ) {
         return false
     }
@@ -714,20 +765,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // useful mt2 price
     //-------
     if (//null
-        (tuple['useful_mt2_price'] == '' || tuple['useful_mt2_price'] == 0) && !filters.null_useful_mt2_price
+        (tuple['useful_mt2_price'] === '') && !filters.null_useful_mt2_price
     ) {
         return false
     }
 
     if (//max
-        !(tuple['useful_mt2_price'] == '' || tuple['useful_mt2_price'] == 0) &&
+        !(tuple['useful_mt2_price'] === '') &&
         filters.max_useful_mt2_price < tuple['useful_mt2_price']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['useful_mt2_price'] == '' || tuple['useful_mt2_price'] == 0) &&
+        !(tuple['useful_mt2_price'] === '') &&
         filters.min_useful_mt2_price > tuple['useful_mt2_price']
     ) {
         return false
@@ -737,20 +788,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // price for bedroom
     //-------
     if (//null
-        (tuple['price_for_bedroom'] == '' || tuple['price_for_bedroom'] == 0) && !filters.null_price_for_bedroom
+        (tuple['price_for_bedroom'] === '') && !filters.null_price_for_bedroom
     ) {
         return false
     }
 
     if (//max
-        !(tuple['price_for_bedroom'] == '' || tuple['price_for_bedroom'] == 0) &&
+        !(tuple['price_for_bedroom'] === '') &&
         filters.max_price_for_bedroom < tuple['price_for_bedroom']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['price_for_bedroom'] == '' || tuple['price_for_bedroom'] == 0) &&
+        !(tuple['price_for_bedroom'] === '') &&
         filters.min_price_for_bedroom > tuple['price_for_bedroom']
     ) {
         return false
@@ -761,20 +812,20 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // useful_mt2_avg_appraisal_price
     //-------
     if (//null
-        (tuple['useful_mt2_avg_appraisal_price'] == '' || tuple['useful_mt2_avg_appraisal_price'] == 0) && !filters.null_useful_mt2_avg_appraisal_price
+        (tuple['useful_mt2_avg_appraisal_price'] === '') && !filters.null_useful_mt2_avg_appraisal_price
     ) {
         return false
     }
 
     if (//max
-        !(tuple['useful_mt2_avg_appraisal_price'] == '' || tuple['useful_mt2_avg_appraisal_price'] == 0) &&
+        !(tuple['useful_mt2_avg_appraisal_price'] === '') &&
         filters.max_useful_mt2_avg_appraisal_price < tuple['useful_mt2_avg_appraisal_price']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['useful_mt2_avg_appraisal_price'] == '' || tuple['useful_mt2_avg_appraisal_price'] == 0) &&
+        !(tuple['useful_mt2_avg_appraisal_price'] === '') &&
         filters.min_useful_mt2_avg_appraisal_price > tuple['useful_mt2_avg_appraisal_price']
     ) {
         return false
@@ -784,21 +835,21 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     // delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
     //-------
     if (//null
-        (tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == '' || tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == 0) &&
+        (tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
         !filters.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
     ) {
         return false
     }
 
     if (//max
-        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == '' || tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == 0) &&
+        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
         filters.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price < tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == '' || tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] == 0) &&
+        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
         filters.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price > tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price']
     ) {
         return false
