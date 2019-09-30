@@ -21,7 +21,7 @@ function showDataScraper() {
 
     commune = consult_manager.getValue(consult_manager.fields.search.commune_id)
 
-    filters = { web_site: web_site, commune: commune }
+    filters = { web_site: web_site, commune: commune, order_publish_date: 'desc' }
 
     limit = consult_manager.getValue(consult_manager.fields.search.limit)
 
