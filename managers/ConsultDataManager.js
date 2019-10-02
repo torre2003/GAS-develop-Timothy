@@ -52,9 +52,9 @@ function ConsultDataManager() {
             max_useful_mt2_avg_appraisal_price: "D38",
             min_useful_mt2_avg_appraisal_price: "D39",
             null_useful_mt2_avg_appraisal_price: "D40",
-            max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price: "D41",
-            min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price: "D42",
-            null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price: "D43",
+            max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D41",
+            min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D42",
+            null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D43",
         },
         values: {
             commune_id: { row: 2, column: 5 },
@@ -78,7 +78,7 @@ function ConsultDataManager() {
         "reg_near_home_total_area_without_restriction", "reg_near_home_total_area_restriction_5_percentage_mt2",
         "reg_near_home_useful_area_without_restriction", "reg_near_home_useful_area_restriction_5_percentage_mt2",
         "useful_mt2_price", "price_for_bedroom", "avg_appraisal_method",
-        "useful_mt2_avg_appraisal_price", "delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price"
+        "useful_mt2_avg_appraisal_price", "delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price"
 
     ]
 
@@ -443,13 +443,13 @@ ConsultDataManager.prototype.proccesDataFromSM = function (data) {
             data[i].useful_mt2_avg_appraisal_price = data[i].avg_appraisal_method / data[i]["entry_data_useful_area"]
         }
 
-        data[i].delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = ""
+        data[i].delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = ""
 
         if (
             data[i].useful_mt2_price &&
             data[i].useful_mt2_avg_appraisal_price != ""
         ) {
-            data[i].delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = data[i].useful_mt2_price - data[i].useful_mt2_avg_appraisal_price
+            data[i].delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = data[i].useful_mt2_avg_appraisal_price - data[i].useful_mt2_price
         }
 
     }
@@ -568,9 +568,9 @@ ConsultDataManager.prototype.getFilters = function () {
     min_useful_mt2_avg_appraisal_price = this.getValue(this.fields.filter.min_useful_mt2_avg_appraisal_price);
     null_useful_mt2_avg_appraisal_price = this.getValue(this.fields.filter.null_useful_mt2_avg_appraisal_price);
 
-    max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = this.getValue(this.fields.filter.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price);
-    min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = this.getValue(this.fields.filter.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price);
-    null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = this.getValue(this.fields.filter.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price);
+    max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = this.getValue(this.fields.filter.max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price);
+    min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = this.getValue(this.fields.filter.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price);
+    null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = this.getValue(this.fields.filter.null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price);
 
 
 
@@ -624,11 +624,11 @@ ConsultDataManager.prototype.getFilters = function () {
 
     filters.null_useful_mt2_avg_appraisal_price = null_useful_mt2_avg_appraisal_price === "" ? false : null_useful_mt2_avg_appraisal_price
 
-    filters.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? 999999999999999 : max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price === "" ? 999999999999999 : max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
 
-    filters.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? -99999999999999 : min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price === "" ? -99999999999999 : min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
 
-    filters.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price = null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price === "" ? false : null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    filters.null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price === "" ? false : null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
 
     return filters
 }
@@ -648,8 +648,8 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     //-------
     // Sectors
     //-------
-    if (!filters.null_sector &&
-        !(tuple['sector'] == null || tuple['sector'] === '')
+    if (//null
+        (tuple['sector'] === '') && !filters.null_sector
     ) {
         return false
     }
@@ -832,25 +832,25 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
     }
 
     //-------
-    // delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+    // delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
     //-------
     if (//null
-        (tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
-        !filters.null_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price
+        (tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price'] === '') &&
+        !filters.null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
     ) {
         return false
     }
 
     if (//max
-        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
-        filters.max_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price < tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price']
+        !(tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price'] === '') &&
+        filters.max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price < tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price']
     ) {
         return false
     }
 
     if (//min
-        !(tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price'] === '') &&
-        filters.min_delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price > tuple['delta_useful_mt2_price_with_useful_mt2_avg_appraisal_price']
+        !(tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price'] === '') &&
+        filters.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price > tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price']
     ) {
         return false
     }
