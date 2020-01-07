@@ -55,6 +55,9 @@ function ConsultDataManager() {
             max_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D41",
             min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D42",
             null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price: "D43",
+            publish_time: "D44",
+            is_property_owner: "D45",
+
         },
         values: {
             commune_id: { row: 2, column: 5 },
@@ -572,7 +575,9 @@ ConsultDataManager.prototype.getFilters = function () {
     min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = this.getValue(this.fields.filter.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price);
     null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = this.getValue(this.fields.filter.null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price);
 
+    publish_time = this.getValue(this.fields.filter.publish_time);
 
+    is_property_owner = this.getValue(this.fields.filter.is_property_owner);
 
 
     filters.null_sector = null_sector === "" ? false : null_sector
@@ -629,6 +634,19 @@ ConsultDataManager.prototype.getFilters = function () {
     filters.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price === "" ? -99999999999999 : min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
 
     filters.null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price = null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price === "" ? false : null_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price
+
+    filters.is_property_owner = is_property_owner === "" ? null : is_property_owner;
+
+    filters.publish_time = publish_time === "" ? null : publish_time
+
+    if (filters.publish_time !== null) {
+
+        var publish_line = new Date();
+
+        publish_line.setHours(publish_line.getHours() - 24 * filters.publish_time);
+
+        filters.publish_time = publish_line
+    }
 
     return filters
 }
@@ -853,6 +871,37 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
         filters.min_delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price > tuple['delta_useful_mt2_avg_appraisal_price_with_useful_mt2_price']
     ) {
         return false
+    }
+
+    if (//publish time
+        filters.publish_time !== null
+    ) {
+        var date_utils = new DateUtils()
+
+        var publish_date = date_utils.getDayForString(tuple['entry_publish_date'])
+
+        if (publish_date < filters.publish_time) {
+            return false
+        }
+
+    }
+
+    if (// is property broker
+        filters.is_property_owner !== null
+    ) {
+        if (
+            filters.is_property_owner &&
+            !tuple['owner']
+        ) {
+            return false;
+        }
+        else
+            if (
+                !filters.is_property_owner &&
+                tuple['owner']
+            ) {
+                return false;
+            }
     }
 
     return true;
