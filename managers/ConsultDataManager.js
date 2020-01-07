@@ -886,7 +886,7 @@ ConsultDataManager.prototype.filterTuple = function (tuple, filters) {
 
     }
 
-    if (// is property broker
+    if (// is property broker xD
         filters.is_property_owner !== null
     ) {
         if (
